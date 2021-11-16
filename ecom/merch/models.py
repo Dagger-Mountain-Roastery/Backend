@@ -2,6 +2,8 @@ from django.conf import settings
 from django.db import models
 
 class Item(models.Model):
+    class Meta:
+        verbose_name_plural = "Items"
     title = models.CharField(max_length=100)
     price = models.FloatField()
 
@@ -16,7 +18,7 @@ class OrderItem(models.Model):
 
 
 class Order(models.Model):
-    user = models.ForeignKey(setting.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # user = models.ForeignKey(setting.AUTH_USER_MODEL, on_delete=models.CASCADE)
     items = models.ManyToManyField(OrderItem)
     start_date = models.DateTimeField(auto_now_add=True)
     ordered_date = models.DateTimeField()
