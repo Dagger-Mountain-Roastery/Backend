@@ -1,7 +1,10 @@
 from django.conf import settings
 from django.db import models
 
-
+ADDRESS_CHOICES = (
+    ('B', 'BILLING'),
+    ('S', 'SHIPPING'),
+)
 
 class UserProfile(models.Model):
     user = models.OneToOneField(
