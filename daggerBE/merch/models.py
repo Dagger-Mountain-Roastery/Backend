@@ -1,12 +1,25 @@
 from django.conf import settings
 from django.db import models
 
+# dont think I'll need this for dagger's products
+CATEGORY_CHOICES = (
+    ('M', 'Merch'),
+    ('B', 'Beans'),
+)
+
+SIZE_CHOICES = (
+    ('S', '12oz'),
+    ('M', '2lb'),
+    ('L', '5lb'),
+)
+
 class Item(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()
     discount_price = models.FloatField(blank=True, null=True)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
-    label = models.CharField(choices=LABEL_CHOICES, max_length=1)
+    # label = models.CharField(choices=LABEL_CHOICES, max_length=1)
+    size = models.CharField(choices=SIZE_CHOICES, max_length=3, default='S')
     slug = models.SlugField()
     description = models.TextField()
     image = models.ImageField()
