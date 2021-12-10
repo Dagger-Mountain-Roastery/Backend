@@ -14,12 +14,30 @@ class Category(models.Model):
     #     return reverse('store:category_list', args=[self.slug])
     
     def __str__(self):
-        returne self.name
+        return self.name
 
 
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='Product', on_delete=CASCADE)
+    created_by = models.ForeignKey(User, related_name='', on_delete=CASCADE)
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='images/')
+    slug = models.SlugField(max_length=255)
+    price = models.DecimalField(max_digits='5', decimal_places='2')
+    in_stock = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name_plural = 'Products'
+        ordering = ('-created',)
+
+    def __str__(self):
+        return self.name
+
+# --------------------------------------------- #
 
 # dont think I'll need this for dagger's products
 # CATEGORY_CHOICES = (

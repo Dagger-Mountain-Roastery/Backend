@@ -1,5 +1,7 @@
 <p align="center">
     Dagger Mountain Backend & Django learning environment
+    <br>
+    Made from <a source='https://www.youtube.com/watch?v=UqSJCVePEWU'>this tutorial</a>
 </p>
 
 ## Python commands
